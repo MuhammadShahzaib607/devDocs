@@ -1,0 +1,18 @@
+display flex
+justifycontent 
+align item
+align self
+gridtemplaterow
+gridtemplatecoloumn
+animation ki achi si example de
+border
+borderRadius
+opacity
+hover
+focus
+
+
+
+
+
+
