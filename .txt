@@ -1,18 +1,118 @@
-display flex
-justifycontent 
-align item
-align self
-gridtemplaterow
-gridtemplatecoloumn
-animation ki achi si example de
-border
-borderRadius
-opacity
-hover
-focus
+var
+let 
+const
+Difference between var, let, and const keywords
+data types
+Create a String with Multiple Spaces
+Multi-line Strings in JavaScript
+alert
+console
+array
+how to use array ==>> write one example
+destructured array
+
+array powerfull method for loop
+forEach
+map
+find
+filter
+reduce
+spraed operator
+rest operator
+
+obj
+obj method:
+push
+pop
+shift
+unshift
+slice
+splice
+how to remove any property in an obj
+how to access property in an obj
+destructured abj
+how to use obj ==>> write one example
+
+how to create function with funtion keyword
+how to create arrow function
+diffirence between arrow function and normal function
+how to call function ==>> write one example
+return
+by refrence ka matlab kya hoota hai
+by value ka matlab kya hoota hai
+
+call
+bind
+apply
+generator function
+callbach function
+higherOrder function 
+constructor function
+
+math.random
+math.floor
+math.ceil
+new Date
+getDate()
+getDay()
+getMonth()
+getfullYear()
+setDate()
+
+localstorage
+session storage
+JSON.parse
+JSON.stringify
+Difference between Local Storage, Session, and Cookies
+JSON Web Token (JWT)
+
+async
+await
+fetch api
+.then
+.catch
+Try{} catch () {}
+promise
+promise reslove
+promise reject
+XML
+Json
+
+JS Arithmetic Operators
+JS Assignment Operators
+JS Comparison Operators
+JS Logical Operators
+JS Ternary Operators
+JS Bitwise Operators
+JS typeof Operator
+JS Ternary Operator
+
+JS if-else
+Switch Case in JS
+Loops in JS
+JS For Loop
+JS While Loop
+JS for-in Loop
+JS for…of Loop
+JS do…while Loop
 
 
+events like onclick, oninput, onchange, onmouseover, onmosueleave, onkeydown,
+onkeyup
+local scope
+global scope
+hoisting
+closures
 
-
-
+dom manupilation
+document query selector
+document query selector all
+document get element by class
+document get element by id
+document create element
+document create attribute
+document set attribute
+document classlist add
+document classlist remove
+document classlist toggle
 

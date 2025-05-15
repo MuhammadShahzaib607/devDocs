@@ -17,6 +17,10 @@ body::-webkit-scrollbar {
 overflow: hidden;
 }
 
+.menu-btn {
+    display: none;
+}
+
 .navbar {
     position: fixed;
     top: 0px;
