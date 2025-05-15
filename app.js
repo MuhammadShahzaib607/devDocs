@@ -1,4 +1,6 @@
 const container = document.querySelector(".container")
+const searchInput = document.querySelector(".searchInput")
+const errorMessage = document.querySelector(".errorMessage")
 
  function toggleMenu() {
             const menu = document.getElementById('nav-menu');
@@ -231,7 +233,44 @@ card.innerHTML = `
     <div class="output">${tag.output}</div>
 `;
 card.querySelector(".heading").textContent = tag.heading;
-card.querySelector(".paragraph").textContent = tag.paragraph;
+card.querySelector(".paragraph").textContent = tag.point;
 card.querySelector(".code").textContent = tag.code;
 container.appendChild (card)
+})
+
+searchInput.addEventListener("input", ()=> {
+  container.innerHTML = ""
+let value = searchInput.value.trim()
+const filteredTags = htmlTags.filter((tag)=> {
+  return (
+tag.heading.includes(value) ||
+tag.point.includes(value) ||
+tag.code.includes(value)
+)
+})
+
+const err = document.createElement("div")
+err.classList.add("errorMessage")
+err.innerHTML = "No matching topics found."
+
+if (filteredTags.length > 0) {
+  err.classList.add("hidden")
+filteredTags.forEach((tag)=> {
+const card = document.createElement("div")
+card.classList.add("card")
+card.innerHTML = `
+    <div class="heading"></div>
+    <div class="paragraph"></div>
+    <div class="code"></div>
+    <div class="output">${tag.output}</div>
+`;
+card.querySelector(".heading").textContent = tag.heading;
+card.querySelector(".paragraph").textContent = tag.point;
+card.querySelector(".code").textContent = tag.code;
+container.appendChild (card)
+})
+} else {
+container.appendChild(err)
+}
+
 })

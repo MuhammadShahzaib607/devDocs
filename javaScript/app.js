@@ -1,4 +1,6 @@
 const container = document.querySelector(".container")
+const searchInput = document.querySelector(".searchInput")
+const errorMessage = document.querySelector(".errorMessage")
 
  function toggleMenu() {
             const menu = document.getElementById('nav-menu');
@@ -656,6 +658,66 @@ const jsConcepts = [
     point: "classList.toggle se hum class ko add ya remove karte hain agar wo pehle se hai ya nahi.",
     code: `const elem = document.querySelector('p');\nelem.classList.toggle('active');`,
     output: "'active' class add ho jati hai agar nahi thi, warna remove."
+  },
+  {
+    heading: "Event Loop",
+    point: "Event loop JS ka mechanism hai jo asynchronous code ko handle karta hai aur call stack ko continuously check karta hai.",
+    code: `console.log('Start');\nsetTimeout(() => {\n  console.log('Timeout');\n}, 0);\nconsole.log('End');`,
+    output: "Console: Start, End, phir Timeout"
+  },
+  {
+    heading: "Microtask Queue",
+    point: "Microtask queue me promises ke callbacks store hote hain jo current task khatam hone ke baad run hote hain.",
+    code: `Promise.resolve().then(() => console.log('Microtask'));`,
+    output: "Microtask call stack clear hone ke baad run hota hai."
+  },
+  {
+    heading: "Callback Queue",
+    point: "Callback queue me asynchronous callbacks jaise setTimeout store hote hain, jo event loop ke through process hote hain.",
+    code: `setTimeout(() => console.log('Callback Queue'), 0);`,
+    output: "Callback queue ke callbacks event loop me wait karte hain."
+  },
+  {
+    heading: "Job Queue",
+    point: "Job queue microtask queue ka doosra naam hai jahan promise callbacks wait karte hain.",
+    code: `Promise.resolve().then(() => console.log('Job Queue'));`,
+    output: "Job queue me callbacks call stack ke baad execute hote hain."
+  },
+  {
+    heading: "Message Queue",
+    point: "Message queue me asynchronous events store hote hain jaise UI events ya setTimeout ke callbacks.",
+    code: `setTimeout(() => console.log('Message Queue'), 0);`,
+    output: "Message queue events event loop ke zariye execute hote hain."
+  },
+  {
+    heading: "Call Stack",
+    point: "Call stack me currently executing functions stack ki tarah store hote hain, last function sabse pehle complete hota hai.",
+    code: `function a() { b(); console.log('a'); }\nfunction b() { console.log('b'); }\na();`,
+    output: "Output: b, a"
+  },
+  {
+    heading: "Single Thread Example",
+    point: "JS single-threaded hai matlab ek waqt me sirf ek kaam karta hai, asynchronous callbacks event loop ke zariye handle hote hain.",
+    code: `console.log('Start');\nsetTimeout(() => console.log('Async'), 0);\nconsole.log('End');`,
+    output: "Output: Start, End, Async"
+  },
+  {
+    heading: "Heap Memory",
+    point: "Heap memory JS me dynamically allocate hoti hai jahan objects aur variables store hote hain.",
+    code: `let obj = { name: 'Ali' };`,
+    output: "Memory me obj allocate hota hai."
+  },
+  {
+    heading: "Garbage Collection",
+    point: "Garbage collector unused memory ko automatically free kar deta hai jo variables ya objects se linked nahi hote.",
+    code: `let a = { name: 'Test' };\na = null; // Garbage collect ho sakta hai`,
+    output: "Memory me se unused objects clear ho jate hain."
+  },
+  {
+    heading: "Background Jaha Task Perform Hote Hain",
+    point: "Background me browser ya JS engine ke APIs asynchronous tasks jaise network requests handle karte hain.",
+    code: `setTimeout(() => console.log('Background Task'), 1000);`,
+    output: "Timeout background me run hoke event loop me callback dalta hai."
   }
 ];
 
@@ -673,4 +735,42 @@ card.querySelector(".heading").textContent = concept.heading;
 card.querySelector(".paragraph").textContent = concept.point;
 card.querySelector(".code").textContent = concept.code;
 container.appendChild (card)
+})
+
+
+searchInput.addEventListener("input", ()=> {
+  container.innerHTML = ""
+let value = searchInput.value.trim()
+const filteredTags = jsConcepts.filter((tag)=> {
+  return (
+tag.heading.includes(value) ||
+tag.point.includes(value) ||
+tag.code.includes(value)
+)
+})
+
+const err = document.createElement("div")
+err.classList.add("errorMessage")
+err.innerHTML = "No matching topics found."
+
+if (filteredTags.length > 0) {
+  err.classList.add("hidden")
+filteredTags.forEach((tag)=> {
+const card = document.createElement("div")
+card.classList.add("card")
+card.innerHTML = `
+    <div class="heading"></div>
+    <div class="paragraph"></div>
+    <div class="code"></div>
+    <div class="output">${tag.output}</div>
+`;
+card.querySelector(".heading").textContent = tag.heading;
+card.querySelector(".paragraph").textContent = tag.point;
+card.querySelector(".code").textContent = tag.code;
+container.appendChild (card)
+})
+} else {
+container.appendChild(err)
+}
+
 })
